@@ -11,8 +11,15 @@ body, html {
   .navbar {
     background: #A8D5EE;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .center-container {
+    display: flex;
+    flex-grow: 1; 
+    margin-right: 30px;
+    justify-content: space-between;
   }
   
   .main-container {
@@ -24,13 +31,13 @@ body, html {
     background: #a8d5ee72; 
     width: 200px;
     height: 100%;
-    margin-right: 25px; 
   }
   
   .page-container {
     flex-grow: 1;
     background: #ffffff; 
     height: 100%;
+    padding: 20px;
   }
   
   .class-header {
@@ -56,7 +63,13 @@ body, html {
     border-radius: 25px;
   }
 
-  .left-s-container, .right-s-container {
-    background: #653fa6;
+  .left-s-container {
+    padding: 25px;
+    background: #43474872;
+  }
+
+  .right-s-container {
+    padding: 25px;
+    background: #414b4d72;
   }
   
