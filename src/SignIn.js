@@ -84,6 +84,7 @@ export default function SignIn() {
               label="Remember me"
             />
             <Button
+              href="/home/student"
               type="submit"
               fullWidth
               variant="contained"
@@ -98,7 +99,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/SignUp" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
