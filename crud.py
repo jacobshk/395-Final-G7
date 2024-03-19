@@ -79,9 +79,9 @@ def main():
 #     })
     
 #     # Add announcements into the database
-    create(db, 'Announcements', {'id': 123, 'text': 'Welcome to the class!'})
-    create(db, 'Announcements', {'id': 456, 'text': 'Assignment 1 is due next week!'})
-    create(db, 'Announcements', {'id': 789, 'text': 'Remember to submit your assignments!'})
+    # create(db, 'Announcements', {'id': 123, 'text': 'Welcome to the class!'})
+    # create(db, 'Announcements', {'id': 456, 'text': 'Assignment 1 is due next week!'})
+    # create(db, 'Announcements', {'id': 789, 'text': 'Remember to submit your assignments!'})
     
     
 
@@ -218,18 +218,15 @@ def get_stream(db, user_email, class_id):
         # Fetch announcement IDs for the class
         announcement_ids = db['Classes'].find_one({'class_id': class_id}).get('announcement_ids', [])
         if announcement_ids:
-            # Initialize a set to store unique announcement texts
-            unique_announcements = set()
-
             # Fetch announcement details for the announcement IDs
-            for announcement_id in announcement_ids:
-                announcement = db['Announcements'].find_one({'id': announcement_id})
-                if announcement:
-                    # Add the announcement text to the set
-                    unique_announcements.add(announcement['text'])
+            announcements_cursor = db['Announcements'].find({'id': {'$in': announcement_ids}})
+            announcements = list(announcements_cursor)
+            if announcements:
+                # Extract announcement texts from the announcement details
+                announcement_text_list = [announcement['text'] for announcement in announcements]
+            else:
+                announcement_text_list = []
 
-            # Convert the set to a list
-            announcement_text_list = list(unique_announcements)
         else:
             announcement_text_list = []
 
@@ -237,6 +234,7 @@ def get_stream(db, user_email, class_id):
 
     else:
         raise ValueError("User does not exist in class.")
+
 
 
 
