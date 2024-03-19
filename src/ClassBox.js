@@ -4,6 +4,32 @@ import Link from '@mui/material/Link';
 import './ClassBox.css';
 
 export default function AddClassBox() {
+  const classes = [ 
+    ['class1', 'teacherName1','classID1'], 
+    ['class2', 'teacherName2','classID2'],
+  ]
+  
+  const addedClasses = []
+  
+  classes.forEach((item) => {
+    const string = "/" + item[2] + "/class-page/student"
+    addedClasses.push(<div class="main-container">
+    <div class="top-container">
+        <div class="top-text">
+            <Link href={string} color="inherit" underline="none">
+                {item[0]}
+            </Link>
+        </div>
+    </div>
+    <div class="bottom-container"> 
+        <div class="bottom-text">
+            {item[1]}
+        </div>
+    </div>
+</div>)
+  });
+
+
   return (
     <Box
       id="class"
@@ -15,20 +41,7 @@ export default function AddClassBox() {
       sx={{ flexWrap: 'wrap'}}
     >
       
-    <div class="main-container">
-        <div class="top-container">
-            <div class="top-text">
-                <Link href="/class-1/class-page/student" color="inherit" underline="none">
-                    {'Class 1'}
-                </Link>
-            </div>
-        </div>
-        <div class="bottom-container"> 
-            <div class="bottom-text">
-                Professor
-            </div>
-        </div>
-    </div>
+    {addedClasses}
     
     </Box>
     

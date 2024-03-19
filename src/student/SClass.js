@@ -17,8 +17,6 @@ import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
 import Orders from './Orders';
 
 function Copyright(props) {
@@ -123,10 +121,10 @@ export default function Dashboard() {
 
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               
-              <Button href="/class-1/class-page/student" color="inherit">Class page</Button>
-              <Button href="/class-1/assignments/student" color="inherit">Assignments</Button>
-              <Button href="/class-1/gradebook/student" color="inherit">Gradebook</Button>
-              <Button href="/class-1/people/student" color="inherit">People</Button>
+              <Button href="/classID1/class-page/student" color="inherit">Class page</Button>
+              <Button href="/classID1/assignments/student" color="inherit">Assignments</Button>
+              <Button href="/classID1/gradebook/student" color="inherit">Gradebook</Button>
+              <Button href="/classID1/people/student" color="inherit">People</Button>
             </Box>
           </Toolbar>
         </AppBar>
@@ -165,8 +163,8 @@ export default function Dashboard() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
+              {/* Class Header */}
+              <Grid item xs={12} md={8} lg={20}>
                 <Paper
                   sx={{
                     p: 2,
@@ -175,23 +173,11 @@ export default function Dashboard() {
                     height: 240,
                   }}
                 >
-                  <Chart />
+                  
                 </Paper>
               </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
+              
+              {/* Assignments */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Orders />

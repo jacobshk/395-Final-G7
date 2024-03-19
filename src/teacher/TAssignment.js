@@ -123,10 +123,10 @@ export default function TAssignment() {
 
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               
-              <Button href="/class-1/class-page/student" color="inherit">Class page</Button>
-              <Button href="/class-1/assignments/student" color="inherit">Assignments</Button>
-              <Button href="/class-1/gradebook/student" color="inherit">Gradebook</Button>
-              <Button href="/class-1/people/student" color="inherit">People</Button>
+              <Button href="/classID1/class-page/student" color="inherit">Class page</Button>
+              <Button href="/classID1/assignments/student" color="inherit">Assignments</Button>
+              <Button href="/classID1/gradebook/student" color="inherit">Gradebook</Button>
+              <Button href="/classID1/people/student" color="inherit">People</Button>
             </Box>
           </Toolbar>
         </AppBar>
