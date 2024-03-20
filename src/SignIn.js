@@ -31,13 +31,30 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+    const response = await fetch('/api/token/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: data.get('email'),
+        password: data.get('password'),
+      }),
     });
+
+    if (response.ok) {
+      const token = await response.json();
+      localStorage.setItem('token', token.access);
+    } else {
+      setErrorMessage('Invalid email or password');
+    }
   };
 
   return (
