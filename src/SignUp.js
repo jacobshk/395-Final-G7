@@ -27,35 +27,41 @@ function Copyright(props) {
 }
 
 // TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
-
+import { useHistory } from 'react-router-dom';
 export default function SignUp() {
+  const [errorMessage, setErrorMessage] = useState(null);
+  const history = useHistory();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
-    const response = await fetch('/api/signup/', {
+    const username = data.get('username');
+    const email = data.get('email');
+    const password = data.get('password');
+    const confirm_password = password
+
+    const response = await fetch('/api/SignUp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        first_name: data.get(      'firstName'),
-        last_name: data.get('lastName'),
-        email: data.get('email'),
-        password: data.get('password'),
+        username,
+        email,
+        password,
+        confirm_password,
       }),
     });
 
+    const responseData = await response.json();
+
     if (response.ok) {
-      const token = await response.json();
-      localStorage.setItem('token', token.access);
+      // Handle successful signup...
+      history.push('/login');
     } else {
-      setErrorMessage('Sign up failed');
+      // Handle errors...
+      setErrorMessage(responseData.message);
     }
   };
 
