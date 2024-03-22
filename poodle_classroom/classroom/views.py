@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from .models import Classroom, class_collection
 from django.http import HttpResponse
 
+# Create your views here.
 def index(request):
     return HttpResponse("App is running")
 
@@ -17,12 +18,3 @@ def add_student(request):
 def get_all_members(request):
     members = class_collection.find()
     return HttpResponse(members)
-
-# Create your views here.
-def class_detail(request, id):
-    classroom = get_object_or_404(Classroom, pk=id)
-    return JsonResponse({'classID': classroom.id, 'teacherName': classroom.teacher_name})
-
-def class_list(request):
-    classrooms = Classroom.objects.all()
-    return JsonResponse([{'classID': classroom.id, 'teacherName': classroom.teacher_name} for classroom in classrooms], safe=False)

@@ -60,7 +60,9 @@ def join_class(db, user_email, class_id):
     else:
         return {'message': 'Class not found'}
     
-### PUT YOUR CRUD FUNCTIONS HERE
+####################################    
+### PUT YOUR CRUD FUNCTIONS HERE ###
+####################################
     
     
 # Mock database for testing

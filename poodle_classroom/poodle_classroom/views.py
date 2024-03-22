@@ -9,6 +9,8 @@ from db_connection import *
 def index(request):
     return render(request, 'index.html')
 
+    
+
 
 @api_view(['POST'])
 def signup_view(request):
