@@ -1,9 +1,5 @@
 import * as React from 'react';
-import Title from '../Title';
-
-/* function preventDefault(event) {
-  event.preventDefault();
-} */
+import Title from './Title';
 
 export default function People() {
   return (
