@@ -17,7 +17,7 @@ import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems } from './listItems';
-import Orders from './Assignment';
+import Assignment from './Assignment';
 import ClassHeader from '../ClassHeader';
 
 function Copyright(props) {
@@ -172,7 +172,7 @@ export default function SAssignment() {
               {/* Assignments */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <Assignment />
                 </Paper>
               </Grid>
             </Grid>

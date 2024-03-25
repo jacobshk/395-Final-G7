@@ -26,6 +26,8 @@ import AddIcon from '@mui/icons-material/Add';
 import { mainListItems, secondaryListItems } from './listItems';
 import ClassHeader from '../ClassHeader';
 import CreateAssignment from './CreateAssignment';
+import { assignmentsData } from '../AssignmentData';
+import Assignment from './Assignment';
 
 const drawerWidth = 240;
 
@@ -167,6 +169,13 @@ export default function TAssignment() {
                 <ClassHeader />
               </Grid>
             </Grid>
+
+            { /* Assignment Feed */}
+              <Grid item xs={12} md={8}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column'}}>
+                  <Assignment assignmentsData={assignmentsData}/>
+                </Paper>
+              </Grid>
           </Container>
         </Box>
         <Fab color="primary" aria-label="add" onClick={handleOpenModal} sx={{

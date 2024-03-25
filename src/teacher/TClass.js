@@ -18,8 +18,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems } from './listItems';
 import ClassHeader from '../ClassHeader';
-import Assignment from '@mui/icons-material/Assignment';
+import Assignment from './Assignment';
 import Upcoming from '../Upcoming';
+import { assignmentsData } from '../AssignmentData';
 
 function Copyright(props) {
   return (
@@ -180,7 +181,7 @@ export default function Dashboard() {
               {/* Assignments */}
               <Grid item xs={12} md={8}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Assignment />
+                  <Assignment assignmentsData={assignmentsData}/>
                 </Paper>
               </Grid>
             </Grid>
