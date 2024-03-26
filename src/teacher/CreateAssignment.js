@@ -1,5 +1,5 @@
 import React from 'react';
-import { createTheme, ThemeProvider, Container, CssBaseline, Box, Typography, TextField, Button, Grid, Avatar, MenuItem, ListItemIcon } from '@mui/material';
+import { createTheme, ThemeProvider, Container, CssBaseline, Box, Typography, TextField, Button, Grid, Avatar, MenuItem } from '@mui/material';
 import ClassIcon from '@mui/icons-material/Class';
 
 const defaultTheme = createTheme();
