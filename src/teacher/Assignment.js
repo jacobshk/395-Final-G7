@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { Paper, Typography, Box, Dialog, DialogTitle, DialogContent, TextField, Button } from '@mui/material';
+import { Paper, Typography, Box, Dialog, DialogTitle, DialogContent, TextField, Button, IconButton, DialogActions } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { assignmentsData } from '../AssignmentData';
 
 export default function Assignment() {
   const [open, setOpen] = useState(false);
-  /* Use a state to keep track of the edited assignment's details */
   const [editableAssignment, setEditableAssignment] = useState(null);
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 
   const handleClickOpen = (assignment) => {
-    setEditableAssignment({ ...assignment }); 
+    setEditableAssignment({ ...assignment });
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+    setEditableAssignment(null);
   };
 
+  /* API CALL HERE */
   const handleUpdate = () => {
-    /* Update with API and etc here! */
     console.log('Updated Assignment:', editableAssignment);
     setOpen(false);
   };
@@ -30,22 +32,37 @@ export default function Assignment() {
     }));
   };
 
+  const handleDeleteClick = () => {
+    setDeleteConfirmationOpen(true);
+  };
+
+  /* API CALL HERE */
+  const handleConfirmDelete = () => {
+    console.log('Deleted Assignment:', editableAssignment.title);
+    setDeleteConfirmationOpen(false);
+    setOpen(false);
+  };
+
+  const handleCloseDeleteConfirmation = () => {
+    setDeleteConfirmationOpen(false);
+  };
+
   return (
     <Box sx={{ padding: 2 }}>
-      <Typography variant="h6" gutterBottom>
-        Assignments Feed
-      </Typography>
+      <Typography variant="h6" gutterBottom>Assignments Feed</Typography>
       {assignmentsData.map((assignment, index) => (
-        <Paper key={index} elevation={3} sx={{ marginBottom: 2, padding: 2, cursor: 'pointer' }} onClick={() => handleClickOpen(assignment)}>
-          <Typography variant="subtitle1" component="div">
-            {assignment.title}
-          </Typography>
-          <Typography variant="body2" sx={{ marginLeft: 2 }}>
-            Due: {assignment.date}
-          </Typography>
-          <Typography variant="body2" display="block" sx={{ marginTop: 1 }}>
-            {assignment.description.substring(0, 100)}...
-          </Typography>
+        <Paper key={index} elevation={3} sx={{ marginBottom: 2, padding: 2 }} onClick={() => handleClickOpen(assignment)}>
+          <Box sx={{ cursor: 'pointer' }}>
+            <Typography variant="subtitle1">
+                {assignment.title}
+                </Typography>
+            <Typography variant="body2" sx={{ marginLeft: 2 }}>
+                Due: {assignment.date}
+                </Typography>
+            <Typography variant="body2" sx={{ marginTop: 1 }}>
+                {assignment.description.substring(0, 100)}...
+                </Typography>
+          </Box>
         </Paper>
       ))}
       {editableAssignment && (
@@ -103,17 +120,32 @@ export default function Assignment() {
               value={editableAssignment.points}
               onChange={handleChange}
             />
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-              <Button onClick={handleClose} color="primary">
-                Cancel
-              </Button>
-              <Button onClick={handleUpdate} color="primary" variant="contained" sx={{ ml: 2 }}>
-                Update
-              </Button>
-            </Box>
           </DialogContent>
+          <DialogActions>
+            <IconButton onClick={handleDeleteClick} color="error">
+              <DeleteIcon />
+            </IconButton>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleUpdate} color="primary" variant="contained">
+              Update
+            </Button>
+          </DialogActions>
         </Dialog>
       )}
+      <Dialog open={deleteConfirmationOpen} onClose={handleCloseDeleteConfirmation}>
+        <DialogTitle>Confirm Deletion</DialogTitle>
+        <DialogContent>
+          <Typography>Are you sure you want to delete this assignment?</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDeleteConfirmation}>Cancel</Button>
+          <Button onClick={handleConfirmDelete} color="error" autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }

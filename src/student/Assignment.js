@@ -100,7 +100,7 @@ export default function Assignment() {
               }}
             />
           </DialogContent>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose}  color="primary" variant="contained">
             Close
           </Button>
         </Dialog>
