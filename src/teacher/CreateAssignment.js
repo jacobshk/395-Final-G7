@@ -17,7 +17,7 @@ export default function CreateAssignment() {
     });
   };
 
-  /* Common Categories for the dropdown */
+  // Common Categories for the dropdown 
   const categories = ['Homework', 'Project', 'Test', 'Exam', 'Quiz'];
 
   return (

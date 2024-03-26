@@ -47,6 +47,7 @@ export default function Assignment() {
     setDeleteConfirmationOpen(false);
   };
 
+  // Cycling through the assignmentData to display each as its own component
   return (
     <Box sx={{ padding: 2 }}>
       <Typography variant="h6" gutterBottom>Assignments Feed</Typography>

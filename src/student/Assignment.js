@@ -21,6 +21,7 @@ export default function Assignment() {
       <Typography variant="h6" gutterBottom>
         Assignments Feed
       </Typography>
+      { /* Cycling through the assignmentData to display each as its own component */}
       {assignmentsData.map((assignment, index) => (
         <Paper key={index} elevation={3} sx={{ marginBottom: 2, padding: 2, cursor: 'pointer' }} onClick={() => handleClickOpen(assignment)}>
           <Typography variant="h7" component="span">
